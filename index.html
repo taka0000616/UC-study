@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IBD 治療最前線 2026 — 病態・標的・薬剤</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eef1f5; --paper:#ffffff; --ink:#16222f; --ink2:#46586a; --line:#dce3ea;
+  --teal:#0e7c7b; --teal-d:#0a5b5a; --coral:#e0522c; --violet:#6e4fa3;
+  --amber:#c47f06; --blue:#2563a8; --rose:#c2356b;
+  --mono:'JetBrains Mono',monospace; --disp:'Space Grotesk','Noto Sans JP',sans-serif;
+  --body:'Inter','Noto Sans JP',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.75;font-size:15px;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--disp);line-height:1.25;letter-spacing:-.01em}
+a{color:var(--teal);text-decoration:none}
+code,.mono{font-family:var(--mono)}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1080px;margin:0 auto;display:flex;align-items:center;gap:18px;padding:11px 22px;overflow-x:auto}
+.brand{font-family:var(--disp);font-weight:700;font-size:15px;white-space:nowrap;color:var(--ink)}
+.brand b{color:var(--teal)}
+.nav-in a.lnk{font-size:13px;color:var(--ink2);white-space:nowrap;font-weight:500}
+.nav-in a.lnk:hover{color:var(--teal)}
+
+/* LAYOUT */
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+section{padding:54px 0;border-bottom:1px solid var(--line)}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--teal)}
+h2.sec{font-size:30px;font-weight:700;margin-bottom:6px}
+.lead{color:var(--ink2);font-size:15px;max-width:760px;margin-bottom:26px}
+
+/* HERO */
+.hero{background:linear-gradient(160deg,#0c2b2b 0%,#103f3d 55%,#0e2e3a 100%);color:#eaf3f2;border-bottom:none;position:relative;overflow:hidden;padding:70px 0 60px}
+.hero::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 20%,rgba(224,82,44,.18),transparent 40%),radial-gradient(circle at 15% 90%,rgba(110,79,163,.20),transparent 45%);pointer-events:none}
+.hero .wrap{position:relative;z-index:2}
+.hero .eyebrow{color:#6ee0d4}
+.hero .eyebrow::before{background:#6ee0d4}
+.hero h1{font-size:46px;font-weight:700;letter-spacing:-.02em;margin-bottom:16px;max-width:840px}
+.hero h1 em{font-style:normal;color:#6ee0d4}
+.hero p{font-size:16px;color:#bcd6d3;max-width:680px;margin-bottom:26px}
+.hero .meta{display:flex;flex-wrap:wrap;gap:10px}
+.chip{font-family:var(--mono);font-size:12px;padding:6px 12px;border:1px solid rgba(255,255,255,.22);border-radius:40px;color:#cfe7e4}
+.chip b{color:#6ee0d4}
+
+/* CARDS / GRID */
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:1fr 1fr}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px}
+.card h3{font-size:17px;margin-bottom:8px}
+.card p{color:var(--ink2);font-size:14px}
+.note{background:#fbf7ee;border:1px solid #ecdcba;border-left:4px solid var(--amber);border-radius:10px;padding:14px 18px;font-size:13.5px;color:#6a5520;margin:18px 0}
+.note b{color:var(--amber)}
+.keypt{background:#eef6f6;border:1px solid #cfe5e4;border-left:4px solid var(--teal);border-radius:10px;padding:14px 18px;font-size:13.5px;color:#1c4a49;margin:18px 0}
+
+/* TABLE */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--paper)}
+table{border-collapse:collapse;width:100%;font-size:13px;min-width:560px}
+th,td{padding:10px 13px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:#f3f6f8;font-family:var(--disp);font-weight:600;font-size:12px;color:var(--ink);position:sticky;top:0}
+tr:last-child td{border-bottom:none}
+td .mono{font-size:12px;color:var(--teal-d)}
+.tag{display:inline-block;font-family:var(--mono);font-size:10.5px;padding:2px 7px;border-radius:5px;font-weight:600;line-height:1.6}
+.t-tnf{background:#fdeae3;color:#b13d18}.t-il{background:#efe8f7;color:#5a3d8c}
+.t-int{background:#e4f0fa;color:#1f5a93}.t-jak{background:#fcecef;color:#a32554}
+.t-s1p{background:#e7f5f0;color:#0c6b4d}.t-conv{background:#eef0f2;color:#465562}
+.t-new{background:#0e7c7b;color:#fff}
+
+/* DRUG CLASS ACCORDION */
+.acc{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--paper);margin-bottom:14px}
+.acc-h{display:flex;align-items:center;gap:14px;padding:18px 20px;cursor:pointer;user-select:none}
+.acc-h:hover{background:#f7f9fb}
+.acc-dot{width:38px;height:38px;border-radius:9px;flex-shrink:0;display:grid;place-items:center;color:#fff;font-family:var(--mono);font-weight:600;font-size:12px}
+.acc-t{flex:1}
+.acc-t h3{font-size:16.5px}
+.acc-t span{font-size:12.5px;color:var(--ink2)}
+.acc-x{font-family:var(--mono);font-size:20px;color:var(--ink2);transition:transform .25s}
+.acc.open .acc-x{transform:rotate(45deg)}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.acc.open .acc-body{max-height:3200px}
+.acc-in{padding:4px 20px 22px}
+.acc-in p{font-size:14px;color:var(--ink2);margin-bottom:10px}
+.acc-in h4{font-size:13.5px;margin:14px 0 6px;color:var(--ink);font-family:var(--disp)}
+.druglist{display:grid;gap:8px;margin:10px 0}
+.drug{display:flex;gap:12px;align-items:baseline;font-size:13.5px;padding:9px 13px;background:#f6f8fa;border-radius:9px;border:1px solid var(--line)}
+.drug .gn{font-weight:600;color:var(--ink);min-width:128px}
+.drug .bn{font-family:var(--mono);font-size:11.5px;color:var(--teal-d)}
+.drug .dd{color:var(--ink2);font-size:12.5px;flex:1}
+
+/* SVG figure */
+.fig{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;margin:8px 0 4px}
+.fig svg{width:100%;height:auto;display:block}
+.fig figcaption{font-size:12.5px;color:var(--ink2);margin-top:12px;font-family:var(--body);text-align:center}
+.legend{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:10px;font-size:12px;color:var(--ink2)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+
+.refs{font-size:12px;color:var(--ink2)}
+.refs li{margin-bottom:5px;list-style:none;padding-left:18px;position:relative}
+.refs li::before{content:"›";position:absolute;left:2px;color:var(--teal)}
+footer{padding:30px 0 50px;text-align:center;font-size:12px;color:var(--ink2)}
+
+@media(max-width:760px){
+ .g2,.g3{grid-template-columns:1fr}
+ .hero h1{font-size:32px}
+ h2.sec{font-size:24px}
+ .drug{flex-direction:column;gap:3px}
+ .drug .gn{min-width:0}
+}
+</style>
+</head>
+<body>
+
+<nav>
+ <div class="nav-in">
+   <span class="brand">IBD <b>Rx</b> 2026</span>
+   <a class="lnk" href="#patho">病態</a>
+   <a class="lnk" href="#target">治療標的</a>
+   <a class="lnk" href="#map">標的マップ</a>
+   <a class="lnk" href="#classes">薬剤クラス</a>
+   <a class="lnk" href="#trials">主要試験</a>
+   <a class="lnk" href="#algo">アルゴリズム</a>
+   <a class="lnk" href="#future">最前線</a>
+   <a class="lnk" href="#practice">実践</a>
+ </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+ <div class="wrap">
+   <div class="eyebrow">炎症性腸疾患 治療レビュー</div>
+   <h1>IBDの薬物治療は、<em>「炎症経路の選択的遮断」</em>の時代へ</h1>
+   <p>抗TNFから始まったバイオロジクスは、白血球トラフィッキング・IL-23軸・JAK-STAT・S1P へと標的を拡張した。2026年現在、UC/CDに使用可能な「先進的治療(advanced therapy)」は14クラス超。本アプリは病態から各薬剤の機序・最新エビデンス・ポジショニングまでを一望する。</p>
+   <div class="meta">
+     <span class="chip">標的 <b>6系統</b></span>
+     <span class="chip">薬剤 <b>15+</b></span>
+     <span class="chip">更新 <b>2026.06</b></span>
+     <span class="chip">対象 <b>UC / CD</b></span>
+   </div>
+ </div>
+</header>
+
+<!-- 病態 -->
+<section id="patho">
+ <div class="wrap">
+   <div class="eyebrow">Immunopathogenesis</div>
+   <h2 class="sec">病態 — なぜこれらの分子が標的になるのか</h2>
+   <p class="lead">IBDは「遺伝的素因 × 腸内細菌叢 × 上皮バリア破綻 × 過剰な粘膜免疫応答」の相互作用で生じる慢性炎症である。バリアを越えた細菌・抗原に対し抗原提示細胞がIL-12/IL-23を産生し、Th1/Th17応答とTNF-αを軸とする炎症カスケードが増幅される。創薬はこのカスケードの各ノードを狙う。</p>
+
+   <div class="grid g3">
+     <div class="card">
+       <h3 style="color:var(--coral)">① バリア破綻</h3>
+       <p>上皮タイトジャンクション・粘液層の異常により管腔抗原が固有層へ。NOD2(CD)等の感受性遺伝子が自然免疫の制御異常に関与。</p>
+     </div>
+     <div class="card">
+       <h3 style="color:var(--violet)">② サイトカイン増幅</h3>
+       <p>樹状細胞・マクロファージがIL-12(→Th1)とIL-23(→Th17維持)を産生。IL-17/IL-22/IFN-γ/TNF-αが組織傷害を駆動。</p>
+     </div>
+     <div class="card">
+       <h3 style="color:var(--blue)">③ 白血球の浸潤</h3>
+       <p>活性化リンパ球が α4β7インテグリン–MAdCAM-1 を介して腸管へ選択的にホーミング。これが腸管選択的治療の標的。</p>
+     </div>
+   </div>
+
+   <div class="keypt">
+     <b>UCとCDの免疫学的差異:</b> UCは表層粘膜に限局するTh2様/非典型炎症(IL-13関与説)+好中球性陰窩膿瘍が特徴。CDは全層性・非連続性でTh1/Th17優位、肉芽腫を伴う。この差が薬剤の効きやすさ(例:IL-23阻害はCDで特に強い内視鏡的効果)に反映される。
+   </div>
+ </div>
+</section>
+
+<!-- 治療標的 -->
+<section id="target">
+ <div class="wrap">
+   <div class="eyebrow">Treat-to-Target</div>
+   <h2 class="sec">治療目標 — STRIDE-II が定めた到達点</h2>
+   <p class="lead">「症状が取れれば良し」から「炎症を測って消す」へ。IOIBDのSTRIDE-IIは短期・中期・長期の階層的ターゲットを定義し、症状改善だけでなく内視鏡的治癒を本質的長期目標に据えた。これがバイオ早期導入・定期的モニタリング(便中カルプロテクチン/CRP/内視鏡)の根拠となる。</p>
+
+   <div class="tbl-wrap">
+     <table>
+       <tr><th>時間軸</th><th>ターゲット</th><th>位置づけ</th></tr>
+       <tr><td>即時</td><td>臨床的反応(症状の改善)</td><td>治療調整の最初の指標</td></tr>
+       <tr><td>短期(3–6ヶ月)</td><td>臨床的寛解 + CRP正常化</td><td>中間目標</td></tr>
+       <tr><td>中期</td><td>便中カルプロテクチン正常化</td><td>サロゲートマーカー</td></tr>
+       <tr><td>長期</td><td><b>内視鏡的治癒</b>(粘膜治癒)</td><td>本質的長期目標。再燃・入院・手術・癌化リスクを低減</td></tr>
+       <tr><td>長期(補助)</td><td>QOL正常化・障害なし・(検討中)組織学的治癒</td><td>組織学的治癒はUCで予後改善と関連、目標化が議論中</td></tr>
+     </table>
+   </div>
+   <div class="note"><b>臨床的含意:</b> 単なる症状コントロールではなく「目標未達なら治療を強化(tight control)」が原則。CALM試験はバイオマーカー駆動の強化戦略が症状駆動より粘膜治癒率を高めることを示した。</div>
+ </div>
+</section>
+
+<!-- 標的マップ SVG -->
+<section id="map">
+ <div class="wrap">
+   <div class="eyebrow">Mechanism Map</div>
+   <h2 class="sec">炎症カスケードと薬剤の標的</h2>
+   <p class="lead">各薬剤クラスがカスケードのどこを遮断するかを一枚に。色はクラスに対応し、下の凡例および薬剤クラス一覧と連動する。</p>
+
+   <figure class="fig">
+     <svg viewBox="0 0 820 470" xmlns="http://www.w3.org/2000/svg" font-family="Inter, sans-serif">
+       <defs>
+         <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#7d8a96"/></marker>
+       </defs>
+       <!-- lumen / epithelium -->
+       <rect x="0" y="0" width="820" height="62" fill="#f3ece4"/>
+       <text x="16" y="26" font-size="13" font-weight="600" fill="#9a5a2e">腸管腔(管腔抗原・腸内細菌)</text>
+       <line x1="0" y1="62" x2="820" y2="62" stroke="#d8a86a" stroke-width="3"/>
+       <text x="16" y="55" font-size="11" fill="#b07b45">上皮バリア</text>
+
+       <!-- APC -->
+       <g>
+         <circle cx="120" cy="135" r="38" fill="#fff" stroke="#6e4fa3" stroke-width="2"/>
+         <text x="120" y="132" font-size="11" font-weight="600" text-anchor="middle" fill="#5a3d8c">APC</text>
+         <text x="120" y="146" font-size="9" text-anchor="middle" fill="#7c6aa0">DC/Mφ</text>
+       </g>
+       <line x1="120" y1="62" x2="120" y2="97" stroke="#7d8a96" stroke-width="1.5" marker-end="url(#ar)"/>
+
+       <!-- IL-12 / IL-23 -->
+       <g>
+         <rect x="210" y="92" width="86" height="34" rx="8" fill="#efe8f7" stroke="#6e4fa3"/>
+         <text x="253" y="113" font-size="12" font-weight="600" text-anchor="middle" fill="#5a3d8c">IL-12</text>
+         <rect x="210" y="146" width="86" height="34" rx="8" fill="#efe8f7" stroke="#6e4fa3"/>
+         <text x="253" y="167" font-size="12" font-weight="600" text-anchor="middle" fill="#5a3d8c">IL-23</text>
+       </g>
+       <line x1="158" y1="125" x2="208" y2="110" stroke="#7d8a96" stroke-width="1.5" marker-end="url(#ar)"/>
+       <line x1="158" y1="145" x2="208" y2="160" stroke="#7d8a96" stroke-width="1.5" marker-end="url(#ar)"/>
+
+       <!-- T cells -->
+       <g>
+         <circle cx="400" cy="108" r="30" fill="#fff" stroke="#0e7c7b" stroke-width="2"/>
+         <text x="400" y="112" font-size="11" font-weight="600" text-anchor="middle" fill="#0a5b5a">Th1</text>
+         <circle cx="400" cy="180" r="30" fill="#fff" stroke="#0e7c7b" stroke-width="2"/>
+         <text x="400" y="184" font-size="11" font-weight="600" text-anchor="middle" fill="#0a5b5a">Th17</text>
+       </g>
+       <line x1="296" y1="109" x2="368" y2="109" stroke="#7d8a96" stroke-width="1.5" marker-end="url(#ar)"/>
+       <line x1="296" y1="163" x2="368" y2="178" stroke="#7d8a96" stroke-width="1.5" marker-end="url(#ar)"/>
+
+       <!-- effector cytokines -->
+       <g>
+         <rect x="510" y="92" width="120" height="32" rx="8" fill="#fdeae3" stroke="#e0522c"/>
+         <text x="570" y="113" font-size="11.5" font-weight="600" text-anchor="middle" fill="#b13d18">TNF-α / IFN-γ</text>
+         <rect x="510" y="164" width="120" height="32" rx="8" fill="#fdeae3" stroke="#e0522c"/>
+         <text x="570" y="185" font-size="11.5" font-weight="600" text-anchor="middle" fill="#b13d18">IL-17 / IL-22</text>
+       </g>
+       <line x1="430" y1="108" x2="508" y2="108" stroke="#7d8a96" stroke-width="1.5" marker-end="url(#ar)"/>
+       <line x1="430" y1="180" x2="508" y2="180" stroke="#7d8a96" stroke-width="1.5" marker-end="url(#ar)"/>
+
+       <!-- inflammation result -->
+       <rect x="690" y="118" width="110" height="60" rx="10" fill="#16222f"/>
+       <text x="745" y="143" font-size="12" font-weight="700" text-anchor="middle" fill="#fff">組織傷害</text>
+       <text x="745" y="161" font-size="10" text-anchor="middle" fill="#9fb0bd">粘膜炎症・潰瘍</text>
+       <line x1="630" y1="108" x2="688" y2="135" stroke="#7d8a96" stroke-width="1.5" marker-end="url(#ar)"/>
+       <line x1="630" y1="180" x2="688" y2="160" stroke="#7d8a96" stroke-width="1.5" marker-end="url(#ar)"/>
+
+       <!-- trafficking branch -->
+       <g>
+         <circle cx="120" cy="300" r="32" fill="#fff" stroke="#2563a8" stroke-width="2"/>
+         <text x="120" y="297" font-size="10" font-weight="600" text-anchor="middle" fill="#1f5a93">リンパ球</text>
+         <text x="120" y="311" font-size="9" text-anchor="middle" fill="#4f7fb0">α4β7+</text>
+         <rect x="250" y="284" width="150" height="34" rx="8" fill="#e4f0fa" stroke="#2563a8"/>
+         <text x="325" y="305" font-size="11" font-weight="600" text-anchor="middle" fill="#1f5a93">α4β7 ⇄ MAdCAM-1</text>
+       </g>
+       <text x="120" y="355" font-size="10" text-anchor="middle" fill="#4f7fb0">腸管へホーミング</text>
+       <line x1="152" y1="300" x2="248" y2="300" stroke="#7d8a96" stroke-width="1.5" marker-end="url(#ar)"/>
+       <line x1="400" y1="300" x2="688" y2="170" stroke="#cdd6de" stroke-width="1.2" stroke-dasharray="4 4"/>
+
+       <!-- JAK-STAT box -->
+       <rect x="470" y="280" width="160" height="42" rx="8" fill="#fcecef" stroke="#c2356b"/>
+       <text x="550" y="298" font-size="11" font-weight="600" text-anchor="middle" fill="#a32554">受容体内 JAK-STAT</text>
+       <text x="550" y="313" font-size="9" text-anchor="middle" fill="#bd5a82">多くのサイトカインの共通下流</text>
+       <line x1="570" y1="124" x2="556" y2="278" stroke="#e6b9c8" stroke-width="1.2" stroke-dasharray="4 4"/>
+
+       <!-- ===== DRUG TARGET BADGES ===== -->
+       <!-- anti-TNF -->
+       <g><rect x="510" y="55" width="120" height="22" rx="11" fill="#e0522c"/><text x="570" y="70" font-size="10.5" font-weight="600" text-anchor="middle" fill="#fff">抗TNF-α</text>
+       <line x1="570" y1="77" x2="570" y2="90" stroke="#e0522c" stroke-width="2"/></g>
+       <!-- IL-12/23 & IL-23 -->
+       <g><rect x="120" y="205" width="180" height="22" rx="11" fill="#6e4fa3"/><text x="210" y="220" font-size="10.5" font-weight="600" text-anchor="middle" fill="#fff">抗IL-12/23(p40)・抗IL-23(p19)</text>
+       <line x1="253" y1="180" x2="253" y2="205" stroke="#6e4fa3" stroke-width="2"/></g>
+       <!-- integrin -->
+       <g><rect x="250" y="340" width="150" height="22" rx="11" fill="#2563a8"/><text x="325" y="355" font-size="10.5" font-weight="600" text-anchor="middle" fill="#fff">抗α4β7インテグリン</text>
+       <line x1="325" y1="318" x2="325" y2="340" stroke="#2563a8" stroke-width="2"/></g>
+       <!-- JAK -->
+       <g><rect x="470" y="340" width="160" height="22" rx="11" fill="#c2356b"/><text x="550" y="355" font-size="10.5" font-weight="600" text-anchor="middle" fill="#fff">JAK阻害薬(経口)</text>
+       <line x1="550" y1="322" x2="550" y2="340" stroke="#c2356b" stroke-width="2"/></g>
+       <!-- S1P -->
+       <g><rect x="640" y="284" width="160" height="42" rx="9" fill="#e7f5f0" stroke="#0c6b4d"/>
+       <text x="720" y="302" font-size="11" font-weight="600" text-anchor="middle" fill="#0c6b4d">S1P受容体調節薬</text>
+       <text x="720" y="316" font-size="9" text-anchor="middle" fill="#3a8f70">リンパ球をリンパ節に隔離</text></g>
+       <line x1="152" y1="290" x2="638" y2="295" stroke="#bfe0d4" stroke-width="1.2" stroke-dasharray="3 4"/>
+     </svg>
+     <figcaption>図1. IBD炎症カスケードと主要薬剤クラスの作用点。APC由来IL-12/23がTh1/Th17を駆動し、TNF-α・IL-17等のエフェクターサイトカインが組織傷害を起こす。別経路として活性化リンパ球のα4β7依存性腸管ホーミングがある。S1P調節薬はリンパ球の二次リンパ組織からの流出を抑制、JAK阻害薬は複数サイトカイン受容体の共通下流を遮断する。</figcaption>
+     <div class="legend">
+       <span><i style="background:#e0522c"></i>抗TNF</span>
+       <span><i style="background:#6e4fa3"></i>IL-12/23・IL-23</span>
+       <span><i style="background:#2563a8"></i>抗インテグリン</span>
+       <span><i style="background:#c2356b"></i>JAK阻害</span>
+       <span><i style="background:#0c6b4d"></i>S1P調節</span>
+     </div>
+   </figure>
+ </div>
+</section>
+
+<!-- 薬剤クラス -->
+<section id="classes">
+ <div class="wrap">
+   <div class="eyebrow">Drug Classes</div>
+   <h2 class="sec">薬剤クラス別 解説</h2>
+   <p class="lead">各クラスをタップで展開。機序・代表薬(一般名/商品名)・適応・エビデンス・安全性の要点をまとめた。括弧内は日本での代表的な販売名。適応は国・改訂で変わるため最新添付文書を確認のこと。</p>
+
+   <!-- Conventional -->
+   <div class="acc">
+     <div class="acc-h"><div class="acc-dot" style="background:#465562">基礎</div>
+       <div class="acc-t"><h3>従来治療(5-ASA・ステロイド・免疫調節薬)</h3><span>導入の土台。多くの軽症〜中等症UCはここで完結しうる</span></div><div class="acc-x">+</div></div>
+     <div class="acc-body"><div class="acc-in">
+       <p><b>5-ASA(メサラジン等):</b> UCの軽〜中等症の第一選択。経口+局所(坐剤・注腸)の併用で直腸〜遠位病変に有効。寛解維持の基盤。CDへの有効性は限定的。</p>
+       <p><b>ステロイド:</b> 中等〜重症の<u>導入</u>専用。寛解維持には用いない(依存・骨/感染リスク)。ブデソニド(局所作用型)は全身性副作用が少なくCD回盲部・UCに有用。</p>
+       <p><b>チオプリン(アザチオプリン/6-MP):</b> ステロイド減量・維持、抗TNFの免疫原性低減(併用)に。NUDT15遺伝子多型で重篤な骨髄抑制リスク → 日本では投与前検査が保険適用。効果発現に2–3ヶ月。</p>
+       <p><b>局所療法を軽視しない:</b> 直腸炎・左側大腸炎では坐剤・注腸・フォーム製剤の局所5-ASA/ステロイドが経口より直腸病変に高濃度で到達し、寛解導入・維持の両面で有効。経口単独で不十分なら「経口+局所」の併用最適化を先に行う。</p>
+       <h4>免疫調節薬の使いどころ</h4>
+       <p>チオプリンは単剤での導入力は弱いが、①ステロイド依存例の維持、②抗TNF(特にIFX)併用による免疫原性低減と血中濃度維持、で価値が高い。メトトレキサートはCDでステロイド減量・維持に選択肢(UCでの単剤推奨は乏しい)。いずれも効果発現が遅く、感染・肝障害・(チオプリンで)膵炎・骨髄抑制・長期使用での非黒色腫皮膚癌/リンパ腫リスクを説明する。</p>
+       <div class="note"><b>注意:</b> 近年ガイドラインはバイオ使用時の5-ASA「漫然併用」を推奨しない。国内大規模リアルワールド解析でもウステキヌマブへの5-ASA上乗せ効果は乏しいと報告された。また長期ステロイドは骨粗鬆症・耐糖能・感染・白内障リスクを伴い、「ステロイドフリー寛解」が治療品質の指標とされる。</div>
+     </div></div>
+   </div>
+
+   <!-- Anti-TNF -->
+   <div class="acc">
+     <div class="acc-h"><div class="acc-dot" style="background:#e0522c">TNF</div>
+       <div class="acc-t"><h3>抗TNF-α抗体</h3><span>30年近い実績。瘻孔・腸管外病変・急性重症に強い</span></div><div class="acc-x">+</div></div>
+     <div class="acc-body"><div class="acc-in">
+       <p><b>機序:</b> 炎症の中心メディエーターであるTNF-αを中和。膜結合型TNFを介するアポトーシス誘導も寄与。CDの瘻孔閉鎖・急性重症UC(ASUC)のレスキューで他クラスにない実績をもつ。</p>
+       <h4>代表薬</h4>
+       <div class="druglist">
+         <div class="drug"><span class="gn">インフリキシマブ</span><span class="bn">レミケード/BS</span><span class="dd">点滴静注。UC/CD。バイオシミラー普及。ASUCのレスキュー第一選択の一つ</span></div>
+         <div class="drug"><span class="gn">アダリムマブ</span><span class="bn">ヒュミラ/BS</span><span class="dd">皮下注。自己注射可。UC/CD</span></div>
+         <div class="drug"><span class="gn">ゴリムマブ</span><span class="bn">シンポニー</span><span class="dd">皮下注。UCのみ</span></div>
+       </div>
+       <h4>TDM(治療薬物モニタリング)</h4>
+       <p>二次無効時は「①薬物濃度低値+抗体陰性 → 増量/間隔短縮」「②濃度低値+抗体高値 → 別クラスへスイッチ」「③濃度十分でも無効 → 機序の異なる薬へ(non-immune-mediated failure)」と原因を切り分ける(reactive TDM)。導入早期の十分な曝露がASUC・瘻孔例の予後に影響するため、重症例では増量レジメンも検討される。</p>
+       <h4>要点と安全性</h4>
+       <p>免疫原性(抗薬物抗体)による二次無効が課題 → トラフ値/抗体価測定(TDM)による最適化、免疫調節薬併用で軽減。<span class="tag t-tnf">注意</span> 結核・B型肝炎の再活性化(投与前スクリーニング必須)、重症感染症、脱髄疾患・心不全(NYHA III/IV)悪化、まれにリンパ腫(特にチオプリン併用若年男性の肝脾T細胞リンパ腫)、乾癬様皮疹・ループス様反応。投与時反応(IFX)にも注意。</p>
+       <div class="keypt"><b>臨床的強み:</b> 瘻孔性CDの閉鎖、壊疽性膿皮症・関節炎などの腸管外病変、ASUCのレスキューで依然第一選択級。バイオシミラー普及でコスト面の障壁も低下した。</div>
+     </div></div>
+   </div>
+
+   <!-- Anti-integrin -->
+   <div class="acc">
+     <div class="acc-h"><div class="acc-dot" style="background:#2563a8">α4β7</div>
+       <div class="acc-t"><h3>抗インテグリン抗体(白血球トラフィッキング阻害)</h3><span>腸管選択的で全身免疫抑制が少ない=安全性プロファイル良好</span></div><div class="acc-x">+</div></div>
+     <div class="acc-body"><div class="acc-in">
+       <p><b>機序:</b> 活性化リンパ球の α4β7インテグリン と腸管血管内皮の MAdCAM-1 の結合を阻害し、腸管へのホーミングを選択的に遮断。全身免疫を温存するため感染リスクが低い。</p>
+       <h4>代表薬</h4>
+       <div class="druglist">
+         <div class="drug"><span class="gn">ベドリズマブ</span><span class="bn">エンタイビオ</span><span class="dd">点滴/皮下注。UC/CD。腸管選択的。高齢者・感染ハイリスクで好まれる。効果発現はやや緩徐</span></div>
+         <div class="drug"><span class="gn">カロテグラストメチル</span><span class="bn">カログラ</span><span class="dd">経口α4インテグリン拮抗薬。日本発・中等症UCの導入(8週まで)。PML懸念から休薬期間規定あり</span></div>
+       </div>
+       <div class="keypt"><b>位置づけ:</b> 安全性重視の症例(高齢・悪性腫瘍既往・感染リスク)で第一選択になりやすい。腸管外病変への効果は乏しい点に留意。経口のカロテグラストメチルは通院静注を避けたい導入期の選択肢。</div>
+       <p><span class="tag t-int">注意</span> 全般に良好だが鼻咽頭炎・関節痛など。ナタリズマブ(α4全般)はPMLリスクで国内IBD未承認。</p>
+     </div></div>
+   </div>
+
+   <!-- IL-12/23 & IL-23 -->
+   <div class="acc">
+     <div class="acc-h"><div class="acc-dot" style="background:#6e4fa3">IL-23</div>
+       <div class="acc-t"><h3>抗IL-12/23(p40)・抗IL-23(p19)抗体</h3><span>2024–25年に最も動いた領域。IL-23選択的遮断が新主流</span></div><div class="acc-x">+</div></div>
+     <div class="acc-body"><div class="acc-in">
+       <p><b>機序:</b> IL-12/IL-23共有のp40を狙うか(ウステキヌマブ)、IL-23特異的なp19のみを狙うか(リサンキズマブ等)。IL-23はTh17の維持・病的記憶T細胞に重要で、p19選択的遮断はIL-12(Th1/抗微生物免疫)を温存しつつ病的経路をピンポイントで抑える。</p>
+       <h4>代表薬</h4>
+       <div class="druglist">
+         <div class="drug"><span class="gn">ウステキヌマブ</span><span class="bn">ステラーラ</span><span class="dd">抗p40。UC/CD。導入静注→維持皮下注。安全性良好・長期実績</span></div>
+         <div class="drug"><span class="gn">リサンキズマブ</span><span class="bn">スキリージ <span class="tag t-new">新</span></span><span class="dd">抗p19。日本:CD(2022/9)・UC(2024/6)承認。INSPIRE/COMMAND試験</span></div>
+         <div class="drug"><span class="gn">ミリキズマブ</span><span class="bn">オンボー <span class="tag t-new">新</span></span><span class="dd">抗p19。日本:UC(2023/3)・CD(2025/3)承認。VIVID-1試験。UC維持は単回皮下注へ簡便化</span></div>
+         <div class="drug"><span class="gn">グセルクマブ</span><span class="bn">トレムフィア <span class="tag t-new">新</span></span><span class="dd">抗p19。米国でUC・CD承認(2024–25)。GALAXI試験</span></div>
+       </div>
+       <h4>要点</h4>
+       <p>head-to-head試験(<b>SEQUENCE:</b> リサンキズマブ vs ウステキヌマブ[CD]、<b>GALAXI:</b> グセルクマブ vs ウステキヌマブ[CD])で、<u>IL-23単独遮断がIL-12/23併合遮断より優れた内視鏡的アウトカム</u>を示した。これがp19選択薬シフトの根拠。安全性は全クラス中最も良好な部類で、感染・悪性腫瘍シグナルが小さい。</p>
+       <p><span class="tag t-il">用量</span> CDではUCより高用量設計(例:ミリキズマブCD維持300mg/4週、UCより高い)。導入は静注、維持は皮下注へ移行するレジメンが主流で、ミリキズマブUC維持は2本→単回皮下注へ簡便化された。</p>
+       <h4>実践ポイント</h4>
+       <p>抗p19は安全性・忍容性が高く、感染スクリーニング後の使用障壁が低い。バイオ未経験例・既治療例いずれでも有効性が示され、結核/HBVスクリーニングは要するもののJAK系のような心血管・血栓の警告はない。CDの内視鏡的改善を重視する症例、抗TNF不耐/失敗例で有力な選択肢。効果発現は抗TNF・JAKより緩徐〜中間で、導入期は症状の橋渡し(ステロイド漸減)を計画する。</p>
+     </div></div>
+   </div>
+
+   <!-- JAK -->
+   <div class="acc">
+     <div class="acc-h"><div class="acc-dot" style="background:#c2356b">JAK</div>
+       <div class="acc-t"><h3>JAK阻害薬(経口低分子)</h3><span>即効性・経口。ASUCでも注目。安全性モニタリングが鍵</span></div><div class="acc-x">+</div></div>
+     <div class="acc-body"><div class="acc-in">
+       <p><b>機序:</b> 複数サイトカイン受容体の共通下流であるJanus kinase–STAT経路を阻害し、広範なシグナルを一度に抑制。経口・速効性が利点。選択性(JAK1偏重)が高いほど血球・脂質系の影響を抑えられると期待される。</p>
+       <h4>代表薬</h4>
+       <div class="druglist">
+         <div class="drug"><span class="gn">トファシチニブ</span><span class="bn">ゼルヤンツ</span><span class="dd">JAK1/3阻害。UC。最初のIBD用JAK</span></div>
+         <div class="drug"><span class="gn">ウパダシチニブ</span><span class="bn">リンヴォック</span><span class="dd">JAK1選択的。UC/CD。高い寛解率。ASUCでの早期併用が臨床試験中(ACESO等)</span></div>
+         <div class="drug"><span class="gn">フィルゴチニブ</span><span class="bn">ジセレカ</span><span class="dd">JAK1選択的。UC。中等症で簡便・良好な継続率</span></div>
+       </div>
+       <div class="note"><b>安全性(クラス警告):</b> RA高齢・心血管リスク集団の試験(ORAL Surveillance)由来のboxed warning — 重篤感染症・帯状疱疹・静脈血栓塞栓症(VTE)・主要心血管イベント・悪性腫瘍。IBD集団のリスクは相対的に低いとされるが、最低有効用量・リスク層別化が原則。<span class="tag t-jak">禁忌に近い注意</span> VTE/心血管高リスク・高齢・喫煙者・悪性腫瘍既往。導入前に帯状疱疹ワクチン(不活化)を検討、脂質・肝酵素・血球のモニタリングを行う。</div>
+       <h4>実践ポイント</h4>
+       <p>経口かつ最速の効果発現が最大の利点。中等〜重症UCの導入で高い臨床的・内視鏡的寛解率を示し、ウパダシチニブはCD・ASUCでも注目される。導入は高用量→維持で減量するレジメン。妊娠は禁忌(催奇形性)で、妊娠可能女性には避妊指導が必要。腎・肝機能、薬物相互作用(CYP3A4)にも留意。半減期が短く、効果消失も速いため服薬アドヒアランスが効果に直結する。</p>
+     </div></div>
+   </div>
+
+   <!-- S1P -->
+   <div class="acc">
+     <div class="acc-h"><div class="acc-dot" style="background:#0c6b4d">S1P</div>
+       <div class="acc-t"><h3>S1P受容体調節薬(経口低分子)</h3><span>リンパ球をリンパ節に「足止め」する新機序の経口薬</span></div><div class="acc-x">+</div></div>
+     <div class="acc-body"><div class="acc-in">
+       <p><b>機序:</b> スフィンゴシン-1-リン酸(S1P)受容体(主にS1P1)を内在化・down-regulationし、リンパ球が二次リンパ組織から血中へ出ていくのを阻害。循環リンパ球が減り腸管への供給が減る。経口・腸管炎症選択性が比較的高い。</p>
+       <h4>代表薬</h4>
+       <div class="druglist">
+         <div class="drug"><span class="gn">オザニモド</span><span class="bn">ゼポジア</span><span class="dd">S1P1/5選択。UC。導入時の漸増(用量設定)が必要</span></div>
+         <div class="drug"><span class="gn">エトラシモド</span><span class="bn">Velsipity</span><span class="dd">S1P1/4/5。UC。1日1回・漸増簡略。日本は承認状況を要確認</span></div>
+       </div>
+       <div class="note"><b>導入前評価:</b> 心電図(投与開始時の徐脈・房室ブロック)、眼科(黄斑浮腫)、肝機能、感染(VZV抗体)。初回投与時の心拍数低下に注意。生ワクチンは投与前に。</div>
+     </div></div>
+   </div>
+
+ </div>
+</section>
+
+<!-- 比較表 -->
+<section id="compare">
+ <div class="wrap">
+   <div class="eyebrow">At a glance</div>
+   <h2 class="sec">クラス横断 早見表</h2>
+   <p class="lead">投与経路・適応・安全性の相対比較。実際の選択は病型・重症度・併存症・患者選好・コスト・腸管外病変の有無で個別化する。</p>
+   <div class="tbl-wrap">
+     <table>
+       <tr><th>クラス</th><th>代表薬</th><th>経路</th><th>UC</th><th>CD</th><th>速効性</th><th>安全性の特徴</th></tr>
+       <tr><td><span class="tag t-tnf">抗TNF</span></td><td>IFX/ADA/GOL</td><td>静注/皮下</td><td>○</td><td>○(瘻孔◎)</td><td>速い</td><td>結核/HBV再活性化・感染。実績豊富</td></tr>
+       <tr><td><span class="tag t-int">抗α4β7</span></td><td>ベドリズマブ</td><td>静注/皮下</td><td>○</td><td>○</td><td>緩徐</td><td>腸管選択的=感染少。高齢/ハイリスク向き</td></tr>
+       <tr><td><span class="tag t-il">抗p40</span></td><td>ウステキヌマブ</td><td>静注→皮下</td><td>○</td><td>○</td><td>中間</td><td>良好。長期実績</td></tr>
+       <tr><td><span class="tag t-il">抗p19</span></td><td>リサンキズマブ/ミリキズマブ</td><td>静注→皮下</td><td>○</td><td>○</td><td>中間</td><td>最良部類。内視鏡効果が強い</td></tr>
+       <tr><td><span class="tag t-jak">JAK阻害</span></td><td>ウパダシチニブ等</td><td>経口</td><td>○</td><td>○(UPA)</td><td>最速</td><td>VTE/心血管/帯状疱疹 警告。要層別化</td></tr>
+       <tr><td><span class="tag t-s1p">S1P調節</span></td><td>オザニモド/エトラシモド</td><td>経口</td><td>○</td><td>—</td><td>中間</td><td>徐脈・黄斑浮腫の初期評価が必要</td></tr>
+     </table>
+   </div>
+ </div>
+</section>
+
+<!-- 主要試験 -->
+<section id="trials">
+ <div class="wrap">
+   <div class="eyebrow">Pivotal Evidence</div>
+   <h2 class="sec">押さえるべき主要試験</h2>
+   <p class="lead">近年のIBD治療観を変えた試験。特にhead-to-headと併用療法(ACT)は処方戦略に直結する。</p>
+
+   <div class="grid g2">
+     <div class="card"><h3 style="color:var(--violet)">SEQUENCE(CD)</h3><p>リサンキズマブ vs ウステキヌマブの直接比較。IL-23単独遮断がp40遮断に対し内視鏡的アウトカムで優越。p19選択薬シフトの主要根拠。</p></div>
+     <div class="card"><h3 style="color:var(--violet)">GALAXI(CD)</h3><p>グセルクマブ(抗p19) vs ウステキヌマブ。同様にIL-23選択的遮断の優れた内視鏡的効果を裏付け。</p></div>
+     <div class="card"><h3 style="color:var(--violet)">VIVID-1(CD)</h3><p>ミリキズマブのCD適応根拠。1年時の臨床的寛解 約53% vs プラセボ 約36%、内視鏡的反応も有意に高率。延長試験VIVID-2で2年継続例の維持を確認。</p></div>
+     <div class="card"><h3 style="color:var(--violet)">INSPIRE / COMMAND(UC)</h3><p>リサンキズマブUC適応の導入(INSPIRE)・維持(COMMAND)試験。日本も参加した国際共同第III相。</p></div>
+     <div class="card"><h3 style="color:var(--coral)">VEGA(UC・概念実証)</h3><p>グセルクマブ+ゴリムマブ併用 vs 各単剤(phase 2)。<b>併用が単剤を上回る</b>傾向。粘膜治癒(内視鏡+組織)率 約40.8% vs 26.8%/15.3%。Advanced Combination Therapy(ACT)の起点。</p></div>
+     <div class="card"><h3 style="color:var(--teal)">CALM / STRIDE-II</h3><p>CALM:バイオマーカー駆動のtight controlが症状駆動より粘膜治癒率を改善。STRIDE-II:内視鏡的治癒を長期目標に定義。treat-to-targetの土台。</p></div>
+   </div>
+
+   <div class="keypt"><b>パラダイム転換の要約:</b> ①IL-23選択的遮断 > IL-12/23併合遮断(内視鏡効果)。②症状ではなく炎症マーカー/内視鏡を目標に(T2T)。③難治例では「異なる機序の併用(ACT)」で治療の天井(therapeutic ceiling)突破を模索。</div>
+ </div>
+</section>
+
+<!-- アルゴリズム -->
+<section id="algo">
+ <div class="wrap">
+   <div class="eyebrow">Positioning</div>
+   <h2 class="sec">治療の組み立て方(概念図)</h2>
+   <p class="lead">あくまで一般的な思考フロー。実際は最新の各国ガイドライン(日本:厚労省難治性炎症性腸管障害研究班[久松班]の診療指針)と個別因子で決定する。</p>
+
+   <figure class="fig">
+     <svg viewBox="0 0 820 430" xmlns="http://www.w3.org/2000/svg" font-family="Inter,sans-serif">
+       <defs><marker id="a2" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 z" fill="#7d8a96"/></marker></defs>
+
+       <rect x="300" y="14" width="220" height="46" rx="10" fill="#16222f"/>
+       <text x="410" y="34" font-size="13" font-weight="700" text-anchor="middle" fill="#fff">確定診断 + 重症度・病型評価</text>
+       <text x="410" y="50" font-size="10" text-anchor="middle" fill="#9fb0bd">内視鏡 / 画像 / CRP / Cal / 予後不良因子</text>
+       <line x1="410" y1="60" x2="410" y2="82" stroke="#7d8a96" stroke-width="1.5" marker-end="url(#a2)"/>
+
+       <!-- mild -->
+       <rect x="40" y="86" width="220" height="44" rx="10" fill="#eef0f2" stroke="#465562"/>
+       <text x="150" y="105" font-size="12" font-weight="600" text-anchor="middle" fill="#2d3a47">軽症〜中等症 UC</text>
+       <text x="150" y="121" font-size="10" text-anchor="middle" fill="#5a6b78">5-ASA(経口+局所)→ 効果不十分でステロイド</text>
+
+       <!-- mod-severe -->
+       <rect x="300" y="86" width="220" height="44" rx="10" fill="#fdeae3" stroke="#e0522c"/>
+       <text x="410" y="105" font-size="12" font-weight="600" text-anchor="middle" fill="#b13d18">中等症〜重症 / 予後不良因子あり</text>
+       <text x="410" y="121" font-size="10" text-anchor="middle" fill="#c0633e">早期に先進的治療(advanced therapy)を検討</text>
+
+       <!-- asuc -->
+       <rect x="560" y="86" width="220" height="44" rx="10" fill="#16222f"/>
+       <text x="670" y="105" font-size="12" font-weight="600" text-anchor="middle" fill="#fff">急性重症 UC(ASUC)</text>
+       <text x="670" y="121" font-size="10" text-anchor="middle" fill="#9fb0bd">入院・静注ステロイド → レスキュー</text>
+
+       <line x1="410" y1="130" x2="410" y2="152" stroke="#7d8a96" stroke-width="1.5" marker-end="url(#a2)"/>
+       <rect x="150" y="156" width="520" height="58" rx="10" fill="#fff" stroke="#0e7c7b" stroke-width="1.5"/>
+       <text x="410" y="178" font-size="12.5" font-weight="700" text-anchor="middle" fill="#0a5b5a">1st-line advanced therapy を選択(個別化)</text>
+       <text x="410" y="198" font-size="10.5" text-anchor="middle" fill="#46586a">病型・腸管外病変・併存症・年齢・感染/悪性リスク・経口希望・コストで層別</text>
+
+       <line x1="410" y1="214" x2="410" y2="236" stroke="#7d8a96" stroke-width="1.5" marker-end="url(#a2)"/>
+
+       <!-- choices row -->
+       <g font-size="10.5" font-weight="600" text-anchor="middle">
+         <rect x="35" y="240" width="150" height="40" rx="8" fill="#e4f0fa" stroke="#2563a8"/><text x="110" y="258" fill="#1f5a93">安全性重視/高齢</text><text x="110" y="272" font-size="9.5" fill="#4f7fb0">ベドリズマブ・抗p19</text>
+         <rect x="200" y="240" width="150" height="40" rx="8" fill="#fdeae3" stroke="#e0522c"/><text x="275" y="258" fill="#b13d18">瘻孔/腸管外病変</text><text x="275" y="272" font-size="9.5" fill="#c0633e">抗TNF</text>
+         <rect x="365" y="240" width="150" height="40" rx="8" fill="#efe8f7" stroke="#6e4fa3"/><text x="440" y="258" fill="#5a3d8c">内視鏡効果/CD</text><text x="440" y="272" font-size="9.5" fill="#7c6aa0">抗IL-23(p19)</text>
+         <rect x="530" y="240" width="150" height="40" rx="8" fill="#fcecef" stroke="#c2356b"/><text x="605" y="258" fill="#a32554">速効/経口希望</text><text x="605" y="272" font-size="9.5" fill="#bd5a82">JAK・S1P(UC)</text>
+       </g>
+
+       <line x1="410" y1="280" x2="410" y2="302" stroke="#7d8a96" stroke-width="1.5" marker-end="url(#a2)"/>
+       <rect x="250" y="306" width="320" height="46" rx="10" fill="#eef6f6" stroke="#0e7c7b"/>
+       <text x="410" y="326" font-size="12" font-weight="700" text-anchor="middle" fill="#0a5b5a">Treat-to-Target でモニタリング</text>
+       <text x="410" y="343" font-size="10" text-anchor="middle" fill="#1c4a49">未達 → 最適化(TDM)/ スイッチ / 併用(ACT)を検討</text>
+
+       <line x1="410" y1="352" x2="410" y2="372" stroke="#7d8a96" stroke-width="1.5" marker-end="url(#a2)"/>
+       <rect x="300" y="376" width="220" height="40" rx="10" fill="#16222f"/>
+       <text x="410" y="395" font-size="11.5" font-weight="600" text-anchor="middle" fill="#fff">内視鏡的治癒・QOL維持</text>
+       <text x="410" y="410" font-size="9.5" text-anchor="middle" fill="#9fb0bd">難治例は外科治療も並走して検討</text>
+     </svg>
+     <figcaption>図2. UCを例にした治療の思考フロー。重症度・予後不良因子で早期にadvanced therapyへ進むか判断し、患者背景で薬剤クラスを層別化、treat-to-targetで継続評価する。CDでは病変部位・瘻孔・狭窄の有無で外科適応評価が並走する。</figcaption>
+   </figure>
+
+   <div class="note"><b>免責:</b> 本図は教育目的の概念整理であり、特定患者への治療指示ではない。適応・用量・禁忌は必ず最新の添付文書および診療ガイドラインで確認すること。</div>
+ </div>
+</section>
+
+<!-- 最前線 -->
+<section id="future">
+ <div class="wrap">
+   <div class="eyebrow">Frontier</div>
+   <h2 class="sec">2026年の最前線トピック</h2>
+   <div class="grid g2">
+     <div class="card"><h3>Advanced Combination Therapy(ACT)</h3><p>異なる機序の薬剤を組み合わせ「治療の天井」を超える戦略。VEGA(抗p19+抗TNF)が概念実証。難治例・腸管外病変合併で研究が進む。感染リスクと費用が課題で、適応の見極めが鍵。</p></div>
+     <div class="card"><h3>IL-23選択遮断の主流化</h3><p>SEQUENCE/GALAXIを受け、p40(ウステキヌマブ)からp19選択薬へのシフトが進行。皮下注の単回化・在宅自己注射でアドヒアランスも改善。</p></div>
+     <div class="card"><h3>経口低分子の拡大</h3><p>JAK1選択薬・S1P調節薬に加え、新規経口薬(例:miR-124を標的とするobefazimod等)が後期試験中。通院静注を避けられる利点と安全性監視の両立が論点。</p></div>
+     <div class="card"><h3>ASUCの早期強化</h3><p>静注ステロイド抵抗例でのウパダシチニブ早期併用など、レスキュー戦略の刷新が臨床試験段階(ACESO等)。colectomy回避を目指す。</p></div>
+     <div class="card"><h3>精密医療(層別化)</h3><p>遺伝的背景・血清/腸管バイオマーカー・腸内細菌叢から「効く薬を最初に当てる」研究が活発。HLAやIBDリスク遺伝子と治療応答・上皮クローン動態の関連は注目領域。</p></div>
+     <div class="card"><h3>5-ASA漫然併用の見直し</h3><p>バイオ/低分子使用例での5-ASA上乗せ効果は乏しいとの国内外データ。減薬による負担・コスト低減の流れ。</p></div>
+   </div>
+ </div>
+</section>
+
+<!-- 特殊状況 -->
+<section id="practice">
+ <div class="wrap">
+   <div class="eyebrow">Practical Notes</div>
+   <h2 class="sec">実践 — 導入前評価・モニタリング・特殊状況</h2>
+   <p class="lead">先進的治療の安全な運用には、開始前スクリーニング・定期モニタリング・併存状況への配慮が欠かせない。クラス共通の要点を整理する。</p>
+
+   <h4 style="font-family:var(--disp);margin-bottom:8px">開始前スクリーニング(共通)</h4>
+   <div class="tbl-wrap">
+     <table>
+       <tr><th>項目</th><th>内容</th><th>特に重要なクラス</th></tr>
+       <tr><td>結核</td><td>IGRA/胸部画像。潜在性なら抗結核薬先行</td><td>抗TNF(最重要)、生物学的製剤全般</td></tr>
+       <tr><td>B/C型肝炎</td><td>HBs抗原・HBc抗体等。再活性化リスク評価・核酸アナログ併用検討</td><td>免疫抑制全般</td></tr>
+       <tr><td>ワクチン</td><td>不活化(肺炎球菌・インフル・帯状疱疹[不活化])は推奨。生ワクチンは免疫抑制下で原則禁忌、開始前に</td><td>S1P・JAK・生物学的製剤</td></tr>
+       <tr><td>心電図/眼科</td><td>徐脈・房室ブロック評価/黄斑浮腫ベースライン</td><td>S1P調節薬</td></tr>
+       <tr><td>脂質・血球・肝</td><td>ベースライン+定期</td><td>JAK阻害薬</td></tr>
+       <tr><td>悪性腫瘍既往</td><td>種類・寛解期間を評価。チオプリン/JAKは慎重</td><td>JAK・チオプリン</td></tr>
+     </table>
+   </div>
+
+   <div class="grid g2" style="margin-top:20px">
+     <div class="card"><h3>妊娠・授乳</h3><p>多くのモノクローナル抗体(抗TNF・ベドリズマブ・ウステキヌマブ等)は妊娠中の疾患コントロールを優先し継続が許容される(IgGの胎盤移行は後期に増えるため出生児の生ワクチン時期に配慮)。<b>JAK阻害薬・MTX・S1Pは妊娠で避ける/禁忌</b>。計画妊娠では事前に治療を見直す。活動性疾患自体が妊娠転帰に悪影響な点が重要。</p></div>
+     <div class="card"><h3>高齢者・感染ハイリスク</h3><p>感染・悪性腫瘍・心血管リスクが高く、腸管選択的で全身免疫を温存するベドリズマブや、安全性プロファイルの良い抗IL-23が好まれやすい。JAK阻害薬は心血管/VTEリスクから慎重に。多剤併用・腎機能も考慮。</p></div>
+     <div class="card"><h3>周術期</h3><p>生物学的製剤と術後合併症リスクの関連は限定的との報告が多いが、ステロイドの高用量は創傷治癒・感染リスクを上げるため術前減量が望ましい。緊急コロン手術(ASUC)ではタイミングを内科外科で協議。</p></div>
+     <div class="card"><h3>腸管外病変(EIM)</h3><p>関節炎・ぶどう膜炎・壊疽性膿皮症・結節性紅斑などの合併では、EIMにも効く抗TNFが有利なことが多い。原発性硬化性胆管炎(PSC)合併UCは大腸癌リスクが高く、サーベイランス内視鏡を強化する。</p></div>
+   </div>
+
+   <h4 style="font-family:var(--disp);margin:24px 0 8px">継続モニタリング</h4>
+   <p style="color:var(--ink2);font-size:14px">便中カルプロテクチン・CRPの定期測定、症状スコア、内視鏡の計画的再評価(治癒確認・サーベイランス)、感染兆候・薬剤特異的有害事象のチェック、必要に応じたTDMを組み合わせる。長期罹患UC/Crohn大腸炎では発癌サーベイランス内視鏡(色素/画像強調)を定期的に行う。</p>
+
+   <div class="keypt"><b>選択の総合原則:</b> 「重症度と予後不良因子で治療強度を、患者背景(年齢・併存症・感染/悪性リスク・妊娠希望・経口希望・腸管外病変・コスト)で薬剤クラスを、treat-to-targetで継続/変更を」決める。単一の最適薬は存在せず、個別化と再評価が本質。</div>
+ </div>
+</section>
+
+<!-- 用語 -->
+<section id="glossary">
+ <div class="wrap">
+   <div class="eyebrow">Glossary</div>
+   <h2 class="sec">用語ミニ集</h2>
+   <div class="grid g2">
+     <div class="card"><h3>advanced therapy</h3><p>生物学的製剤+先進的経口低分子(JAK・S1P)の総称。従来治療に対する概念。</p></div>
+     <div class="card"><h3>Treat-to-Target (T2T)</h3><p>症状でなく客観的炎症指標/内視鏡所見を目標に治療を調整する戦略。STRIDE-IIが目標を定義。</p></div>
+     <div class="card"><h3>therapeutic ceiling</h3><p>単剤では1年寛解率が概ね4〜5割で頭打ちになる現象。ACT等で突破を試みる。</p></div>
+     <div class="card"><h3>ASUC</h3><p>急性重症UC。入院・静注ステロイド管理し、抵抗例はインフリキシマブ/シクロスポリン(/治験下のJAK)でレスキュー、無効なら緊急大腸全摘。</p></div>
+     <div class="card"><h3>TDM</h3><p>治療薬物モニタリング。血中薬物濃度・抗薬物抗体を測り、増量/併用/スイッチを判断。</p></div>
+     <div class="card"><h3>p40 / p19</h3><p>p40=IL-12とIL-23の共有サブユニット(ウステキヌマブ標的)。p19=IL-23特異的サブユニット(リサンキズマブ等の標的)。</p></div>
+   </div>
+ </div>
+</section>
+
+<!-- 参考 -->
+<section id="refs">
+ <div class="wrap">
+   <div class="eyebrow">References</div>
+   <h2 class="sec">主な情報源</h2>
+   <ul class="refs">
+     <li>FDA / Eli Lilly: ミリキズマブ(Omvoh)のCD承認(2025/1)・UC単回維持承認(2025–26)</li>
+     <li>AbbVie / PMDA・HOKUTO: リサンキズマブ(スキリージ)UC適応追加(日本2024/6)、INSPIRE / COMMAND試験</li>
+     <li>新薬情報オンライン: オンボー(ミリキズマブ)国内承認経緯(UC 2023/3, CD 2025/3)</li>
+     <li>Feagan BG, et al. VEGA study. Lancet Gastroenterol Hepatol. 2023;8:307-20</li>
+     <li>SEQUENCE / GALAXI(IL-23 vs IL-12/23 head-to-head, CD)</li>
+     <li>VIVID-1 / VIVID-2(ミリキズマブ CD)</li>
+     <li>Turner D, et al. STRIDE-II. Gastroenterology 2021(treat-to-target)</li>
+     <li>厚労省 難治性炎症性腸管障害に関する調査研究班(久松班)診療指針 令和7年度</li>
+     <li>AGA / ECCO ガイドライン(ポジショニング・推奨)</li>
+   </ul>
+   <div class="note" style="margin-top:18px"><b>正確性に関する注記:</b> 薬剤の適応・用法・承認状況は国(日本/米国/欧州)および改訂時期で異なる。本アプリは2026年6月時点の公開情報に基づく教育コンテンツであり、臨床判断は必ず最新の添付文書・公式ガイドラインを参照のこと。</div>
+ </div>
+</section>
+
+<footer>IBD Rx 2026 — 病態・治療標的・薬剤クラスの教育用まとめ｜2026年6月作成</footer>
+
+<script>
+document.querySelectorAll('.acc-h').forEach(h=>{
+  h.addEventListener('click',()=>h.parentElement.classList.toggle('open'));
+});
+// 最初の2クラスを開いておく
+document.querySelectorAll('.acc')[1]?.classList.add('open');
+</script>
+</body>
+</html>
